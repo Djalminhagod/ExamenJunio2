@@ -59,6 +59,9 @@ public class Gestor {
     }
     public void apagarNodo() {
         Scanner sc = new Scanner(System.in);
+        if (nodos.isEmpty() || nodos==null) {
+            throw new ServidorApagadoException("No existe ningun servidor");
+        }
         System.out.println("dime hostname");
         String hostname = sc.nextLine();
         for (NodoServidor nodo : nodos) {
@@ -68,18 +71,24 @@ public class Gestor {
                 return;
             }
         }
-        if (nodos.isEmpty() || nodos==null) {
-            throw new ServidorApagadoException("No existe el servidor");
-        }
+
         throw  new ServidorApagadoException("No existe ese servidor");
     }
     public void verDashboard() {
         int ramTotal = 0;
+        double cargaTotal = 0;
         for (NodoServidor nodo : nodos){
             ramTotal=ramTotal+nodo.getRamAsignada();
             System.out.println(nodo.toString());
 
         }
+
+        for (NodoServidor nodo : nodos){
+            System.out.println("carga adicional: "+nodo.cargaAdicional());
+            cargaTotal=cargaTotal+nodo.cargaAdicional();
+
+        }
+        System.out.println("Carga adcional total: "+cargaTotal);
         System.out.println("toda ram ocupada es: "+ramTotal);
     }
 

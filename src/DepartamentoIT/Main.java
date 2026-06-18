@@ -40,7 +40,7 @@ public class Main {
                     salir = false;
                     break;
                 default:
-                    System.out.println("Opcion incorrecta");
+                    System.err.println("Opcion incorrecta");
                     break;
 
 

@@ -19,6 +19,6 @@ public class ControladorDominio extends NodoServidor {
 
     @Override
     public double cargaAdicional() {
-        return ramAsignada*2 + (usuariosActivos+0.5);
+        return ramAsignada*2 + (usuariosActivos*0.5);
     }
 }
